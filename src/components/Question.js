@@ -27,7 +27,7 @@ function Question({ question, onAnswered }) {
       setTimeRemaining((timeRemaining) => timeRemaining - 1)
     }, 1000);
     return () => clearTimeout(timer);
-  }, [timeRemaining, onAnswered(false)]); // remove false to see questions from game.
+  }, [timeRemaining, onAnswered(false)]); // remove false to see questions from game.//
 
   function handleAnswer(isCorrect) {
     setTimeRemaining(10);
