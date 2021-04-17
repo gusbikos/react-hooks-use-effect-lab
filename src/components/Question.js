@@ -1,9 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Question({ question, onAnswered }) {
   const [timeRemaining, setTimeRemaining] = useState(10);
 
+  // const currentQuestion = questions.find((q) => q.id === currentQuestionId)
+
+  // function handleQuestionAnswered(correct) {
+  //   if (currentQuestionId < questions.length) {
+  //     setCurrentQuestion((currentQuestionId) => currentQuestionId + 1);
+  //   } else {
+  //     setCurrentQuestion(null);
+  //   }
+  //   if (correct) {
+  //     setScore((score) => score + 1);
+  //   }
+  // }
+
   // add useEffect code
+
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      setTimeRemaining(10)
+    }
+
+    const timer = setTimeout(() => {
+      setTimeRemaining((timeRemaining) => timeRemaining - 1)
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [timeRemaining, onAnswered(false)]); // remove false to see questions from game.
 
   function handleAnswer(isCorrect) {
     setTimeRemaining(10);
